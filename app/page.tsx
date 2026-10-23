@@ -58,7 +58,7 @@ export default function Page() {
   const filteredProducts = useMemo(() => products.filter((product) => product.title.toLowerCase().includes(query.toLowerCase()) || product.shop.toLowerCase().includes(query.toLowerCase())), [query])
 
   return (
-    <main className="min-h-screen bg-[#f7f8fa] text-[#102238]">
+    <main className="min-h-screen w-full overflow-x-hidden bg-[#f7f8fa] text-[#102238]">
       <div className="bg-[#102238] px-4 py-2 text-center text-xs font-medium text-slate-200">Free delivery on orders above PKR 2,500 · Serving North Karachi and nearby areas</div>
       <header className="border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8">
@@ -72,7 +72,7 @@ export default function Page() {
           <div className="flex items-center gap-2">
             <button className="hidden items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 sm:flex"><CircleUserRound className="size-5" /> Account</button>
             <button className="relative grid size-10 place-items-center rounded-lg text-slate-700 hover:bg-slate-50" aria-label="Shopping cart"><ShoppingCart className="size-5" />{cartCount > 0 && <span className="absolute right-0 top-0 grid size-4 place-items-center rounded-full bg-[#d99e28] text-[10px] font-bold text-white">{cartCount}</span>}</button>
-            <button className="grid size-10 place-items-center rounded-lg border border-slate-200 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">{menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}</button>
+            <button className="grid size-10 place-items-center rounded-lg border border-slate-200 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} aria-controls="mobile-navigation">{menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}</button>
           </div>
         </div>
         <div className="px-4 pb-3 md:hidden">
@@ -81,7 +81,7 @@ export default function Page() {
             <input value={query} onChange={(event) => setQuery(event.target.value)} className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Search products, shops or services..." aria-label="Search products, shops or services" />
           </div>
         </div>
-        <div className={`${menuOpen ? 'flex' : 'hidden'} flex-col gap-4 border-t border-slate-100 px-4 py-4 md:hidden`}><a href="#shop" className="text-sm font-semibold">Shop products</a><a href="#services" className="text-sm font-semibold">Book a service</a><a href="#sell" className="text-sm font-semibold">Sell with us</a></div>
+        <div id="mobile-navigation" className={`${menuOpen ? 'flex' : 'hidden'} flex-col gap-4 border-t border-slate-100 px-4 py-4 md:hidden`}><a href="#shop" className="text-sm font-semibold">Shop products</a><a href="#services" className="text-sm font-semibold">Book a service</a><a href="#sell" className="text-sm font-semibold">Sell with us</a></div>
         <nav className="mx-auto hidden max-w-7xl items-center justify-between px-4 pb-3 lg:px-8 md:flex"><div className="flex items-center gap-7 text-sm font-semibold text-slate-600"><a href="#shop" className="text-[#102238]">Shop</a><a href="#categories">Categories</a><a href="#services">Home services</a><a href="#wholesale">Wholesale</a><a href="#sell">Sell on North</a></div><button className="flex items-center gap-2 text-sm text-slate-600"><Bike className="size-4 text-[#d99e28]" /> Delivering to <span className="font-bold text-[#102238]">{sector}</span><ChevronDown className="size-4" /></button></nav>
       </header>
 
