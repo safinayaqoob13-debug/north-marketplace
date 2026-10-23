@@ -75,6 +75,12 @@ export default function Page() {
             <button className="grid size-10 place-items-center rounded-lg border border-slate-200 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">{menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}</button>
           </div>
         </div>
+        <div className="px-4 pb-3 md:hidden">
+          <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5">
+            <Search className="size-5 shrink-0 text-slate-400" aria-hidden="true" />
+            <input value={query} onChange={(event) => setQuery(event.target.value)} className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Search products, shops or services..." aria-label="Search products, shops or services" />
+          </div>
+        </div>
         <div className={`${menuOpen ? 'flex' : 'hidden'} flex-col gap-4 border-t border-slate-100 px-4 py-4 md:hidden`}><a href="#shop" className="text-sm font-semibold">Shop products</a><a href="#services" className="text-sm font-semibold">Book a service</a><a href="#sell" className="text-sm font-semibold">Sell with us</a></div>
         <nav className="mx-auto hidden max-w-7xl items-center justify-between px-4 pb-3 lg:px-8 md:flex"><div className="flex items-center gap-7 text-sm font-semibold text-slate-600"><a href="#shop" className="text-[#102238]">Shop</a><a href="#categories">Categories</a><a href="#services">Home services</a><a href="#wholesale">Wholesale</a><a href="#sell">Sell on North</a></div><button className="flex items-center gap-2 text-sm text-slate-600"><Bike className="size-4 text-[#d99e28]" /> Delivering to <span className="font-bold text-[#102238]">{sector}</span><ChevronDown className="size-4" /></button></nav>
       </header>
